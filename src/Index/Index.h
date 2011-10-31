@@ -24,27 +24,19 @@ class Address{
 * @brief the base class of the B+ tree nodes
 */
 class BaseNode{
+public:
 	int blockId;
+	bool isRoot;
 	bool isLeaf;
 	char type;
+	int parent;
+	int next;
+	int capacity;	///< the capcity of children, 4000/size - 1
+	int num;		///< the number of children
 
 	bool dirty;
 	bool lock;
 	int time;
-};
-
-/**
-* @class NonleafNode
-*/
-class NonleafNode : public BaseNode{
-};
-
-/**
-* @class LeafNode
-*/
-class LeafNode : public BaseNode{
-	int size;
-	int capacity;
 
 	char data[4000];
 };
